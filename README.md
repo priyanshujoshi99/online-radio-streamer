@@ -69,3 +69,19 @@ This application is configured as a Progressive Web App (PWA).
 -   [TypeScript](https://www.typescriptlang.org/)
 -   [react-h5-audio-player](https://github.com/lhz516/react-h5-audio-player)
 -   [vite-plugin-pwa](https://vite-pwa-org.netlify.app/)
+
+## Deployment (Netlify)
+
+This project includes a `netlify.toml` configuration file for easy deployment.
+
+### Option 1: Drag and Drop
+1.  Run `npm run build` locally.
+2.  Drag the `dist` folder to the Netlify Drop area in your dashboard.
+
+### Option 2: Git Integration (Recommended)
+1.  Push your code to GitHub/GitLab/Bitbucket.
+2.  Log in to Netlify and "Import from Git".
+3.  Netlify will detect the settings from `netlify.toml`:
+    -   **Build Command**: `npm run build`
+    -   **Publish Directory**: `dist`
+4.  **Important**: In "Site settings" > "Environment variables", add the variables from your `.env` file (e.g., `VITE_RADIO_PRIMARY_NAME`, `VITE_RADIO_PRIMARY_URL`, etc.).
