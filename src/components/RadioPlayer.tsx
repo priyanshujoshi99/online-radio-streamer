@@ -32,8 +32,12 @@ export default function RadioPlayer() {
     const proxyEnabled = (import.meta.env.VITE_RADIO_PROXY_ENABLED === "true");
     const proxyBase = (import.meta.env.VITE_RADIO_PROXY_BASE as string) || "";
     
-    if (proxyEnabled) {
+    // Auto-enable proxy if we are on HTTPS and the stream is HTTP to avoid mixed-content error
+    const isMixedContent = window.location.protocol === "https:" && url.startsWith("http:");
+
+    if (proxyEnabled || isMixedContent) {
       const base = proxyBase ? proxyBase.replace(/\/$/, "") : "";
+      // If we are auto-proxying (isMixedContent) and no base is set, it defaults to current origin relative path
       return `${base}/proxy-stream?target=${encodeURIComponent(url)}`;
     }
     return url;
