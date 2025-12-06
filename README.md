@@ -68,15 +68,26 @@ This application is configured as a Progressive Web App (PWA).
 -   [Vite](https://vitejs.dev/)
 -   [TypeScript](https://www.typescriptlang.org/)
 -   [react-h5-audio-player](https://github.com/lhz516/react-h5-audio-player)
--   [vite-plugin-pwa](https://vite-pwa-org.netlify.app/)
+- [react-h5-audio-player](https://github.com/lhz516/react-h5-audio-player)
+- [vite-plugin-pwa](https://vite-pwa-org.netlify.app/)
 
 ## Deployment (Netlify)
 
-This project includes a `netlify.toml` configuration file for easy deployment.
+This project includes a `netlify.toml` configuration file for easy deployment. It also includes an Edge Function to proxy HTTP streams over HTTPS to avoid mixed-content errors.
+
+### Enabling the Proxy (Required for HTTPS sites)
+If your deployed site is HTTPS (which Netlify is by default), playing an HTTP radio stream will fail. To fix this:
+
+1.  In Netlify, go to **Site settings > Environment variables**.
+2.  Add `VITE_RADIO_PROXY_ENABLED` with value `true`.
+3.  (Optional) `VITE_RADIO_PROXY_BASE` can be left empty to use the deployed site's own proxy function.
+
+### Deployment Options
 
 ### Option 1: Drag and Drop
 1.  Run `npm run build` locally.
-2.  Drag the `dist` folder to the Netlify Drop area in your dashboard.
+2.  Drag the `dist` folder to the Netlify Drop area.
+**Note**: Drag and drop might not deploy Edge Functions correctly. **Git Integration is generally required for Edge Functions.**
 
 ### Option 2: Git Integration (Recommended)
 1.  Push your code to GitHub/GitLab/Bitbucket.

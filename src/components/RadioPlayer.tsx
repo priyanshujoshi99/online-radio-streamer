@@ -31,8 +31,10 @@ export default function RadioPlayer() {
     if (!url) return "";
     const proxyEnabled = (import.meta.env.VITE_RADIO_PROXY_ENABLED === "true");
     const proxyBase = (import.meta.env.VITE_RADIO_PROXY_BASE as string) || "";
-    if (proxyEnabled && proxyBase) {
-      return `${proxyBase.replace(/\/$/, "")}/proxy-stream?target=${encodeURIComponent(url)}`;
+    
+    if (proxyEnabled) {
+      const base = proxyBase ? proxyBase.replace(/\/$/, "") : "";
+      return `${base}/proxy-stream?target=${encodeURIComponent(url)}`;
     }
     return url;
   };
