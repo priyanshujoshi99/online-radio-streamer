@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Online Radio Streamer</string>
+    <string name="title_activity_main">Online Radio Streamer</string>
+    <string name="package_name">com.priyanshujoshi99.onlineradiostreamer</string>
+    <string name="custom_url_scheme">com.priyanshujoshi99.onlineradiostreamer</string>
+</resources>
