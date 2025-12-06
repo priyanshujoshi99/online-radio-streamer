@@ -1,75 +1,71 @@
-# React + TypeScript + Vite
+# Online Radio Streamer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, accessible, and responsive online radio player built with React, Vite, and TypeScript. This application features a clean interface, robust audio playback using `react-h5-audio-player`, and PWA support for installation on desktop and mobile devices.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+*   **Live Radio Streaming**: Plays configured radio streams with support for various audio formats.
+*   **Station Management**: Easily switch between configured stations.
+*   **Manual URL Support**: Add and play custom stream URLs on the fly.
+*   **PWA Support**: Installable as a native-like app with offline fallback and custom branding.
+*   **Responsive Design**: optimized for both desktop and mobile screens.
+*   **Accessibility**: Built with semantic HTML and ARIA labels for better accessibility.
 
-## React Compiler
+## Configuration
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+The application is configured using environment variables.
 
-Note: This will impact Vite dev & build performances.
+**Note**: The `.env` file is committed to the repository for this project setup. You can modify it directly to change the default stations.
 
-## Expanding the ESLint configuration
+### Environment Variables
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+*   `VITE_RADIO_PRIMARY_NAME`: Name of the default radio station.
+*   `VITE_RADIO_PRIMARY_URL`: Stream URL for the default station.
+*   `VITE_RADIO_ADDITIONAL`: A JSON string array of additional stations.
+*   `VITE_RADIO_PROXY_ENABLED`: (Optional) Set to `true` to enable proxying (requires backend proxy).
+*   `VITE_RADIO_PROXY_BASE`: (Optional) Base URL for the proxy server.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+**Example `.env` content:**
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+VITE_RADIO_PRIMARY_NAME="Radio Sri Lanka"
+VITE_RADIO_PRIMARY_URL="http://220.247.227.20:8000/RSLstream"
+VITE_RADIO_ADDITIONAL='[{"name":"Example FM","url":"http://1.2.3.4:8000/stream.mp3"}]'
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+2.  **Run the development server**:
+    ```bash
+    npm run dev
+    ```
+
+3.  **Build for production**:
+    ```bash
+    npm run build
+    ```
+
+4.  **Preview production build**:
+    ```bash
+    npm run preview
+    ```
+
+## PWA
+
+This application is configured as a Progressive Web App (PWA).
+- **Icons**: Radio logo assets are in the `public` directory.
+- **Manifest**: Generated automatically by `vite-plugin-pwa`.
+- **Offline**: Service worker caches critical assets for offline shell support.
+
+## Technologies
+
+-   [React](https://react.dev/)
+-   [Vite](https://vitejs.dev/)
+-   [TypeScript](https://www.typescriptlang.org/)
+-   [react-h5-audio-player](https://github.com/lhz516/react-h5-audio-player)
+-   [vite-plugin-pwa](https://vite-pwa-org.netlify.app/)
