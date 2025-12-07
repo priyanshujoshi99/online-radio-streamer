@@ -37,6 +37,7 @@
   border: none;
   background: transparent;
   display: block; /* Removes bottom space */
+  max-width: 100%;
 }
 
 @media (max-width: 768px) {
