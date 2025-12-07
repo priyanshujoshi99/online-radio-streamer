@@ -1,0 +1,53 @@
+:root {
+  /* Colors - Premium Blue/Purple Gradient Theme */
+  --primary-hue: 250;
+  --secondary-hue: 320;
+  
+  --color-primary: hsl(var(--primary-hue), 80%, 65%);
+  --color-primary-dark: hsl(var(--primary-hue), 80%, 50%);
+  --color-secondary: hsl(var(--secondary-hue), 80%, 65%);
+  
+  --color-bg-dark: #0f0f13;
+  --color-bg-panel: rgba(255, 255, 255, 0.05);
+  --color-text-main: #ffffff;
+  --color-text-muted: rgba(255, 255, 255, 0.6);
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border-highlight: rgba(255, 255, 255, 0.2);
+
+  /* Gradients */
+  --gradient-bg: radial-gradient(circle at 10% 20%, rgba(68, 13, 226, 0.15) 0%, rgba(0, 0, 0, 0) 40%),
+                 radial-gradient(circle at 90% 80%, rgba(200, 50, 150, 0.15) 0%, rgba(0, 0, 0, 0) 40%),
+                 var(--color-bg-dark);
+  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+  --gradient-text: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+
+  /* Glassmorphism */
+  --glass-bg: rgba(20, 20, 25, 0.6);
+  --glass-border: 1px solid var(--color-border);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --glass-backdrop: blur(12px);
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 8px;
+
+  /* Typography */
+  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  background: var(--gradient-bg);
+  background-attachment: fixed;
+  color: var(--color-text-main);
+  font-family: var(--font-family);
+  margin: 0;
+  min-height: 100vh;
+}

@@ -1,18 +1,15 @@
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import './App.css';
-import AkashvaniIframe from './components/AkashvaniIframe';
-import RadioPlayer from './components/RadioPlayer';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Akashvani } from './features/akashvani/Akashvani';
+import { Player } from './features/player/Player';
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<RadioPlayer />} />
-          <Route path="/akashvani" element={<AkashvaniIframe />} />
-        </Routes>
-      </div>
-    </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Player />} />
+        <Route path="/akashvani" element={<Akashvani />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

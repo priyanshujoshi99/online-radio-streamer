@@ -1,0 +1,73 @@
+.playerContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  width: 100%;
+}
+
+.playerCard {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background blob for vibe */
+.playerCard::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(var(--primary-hue), 80%, 65%, 0.1) 0%, transparent 60%);
+  animation: rotate 20s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Override Audio Player Styles for Glassmorphism */
+.audioPlayer {
+  width: 100%;
+  margin-top: 2rem;
+  border-radius: var(--radius-md) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  box-shadow: none !important;
+}
+
+.audioPlayer :global(.rhap_time),
+.audioPlayer :global(.rhap_current-time) {
+  color: var(--color-text-muted) !important;
+}
+
+.audioPlayer :global(.rhap_progress-indicator),
+.audioPlayer :global(.rhap_volume-indicator) {
+  background: var(--color-primary) !important;
+}
+
+.audioPlayer :global(.rhap_progress-filled),
+.audioPlayer :global(.rhap_volume-bar) {
+  background: var(--color-primary) !important;
+}
+
+.audioPlayer :global(.rhap_download-progress) {
+  background: rgba(255, 255, 255, 0.1) !important;
+}

@@ -1,0 +1,43 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+/* Custom Scrollbar */
+.list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.list::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.stationItem {
+  width: 100%;
+  text-align: left;
+  justify-content: flex-start !important;
+  background: rgba(255,255,255,0.02) !important;
+}
+
+.stationItem:hover {
+  background: rgba(255,255,255,0.08) !important;
+}
+
+.active {
+  background: rgba(var(--primary-hue), 80%, 65%, 0.15) !important;
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 15px rgba(var(--primary-hue), 80%, 65%, 0.2) !important;
+}
