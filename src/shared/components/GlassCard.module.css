@@ -12,3 +12,10 @@
 .card:hover {
   border-color: var(--color-border-highlight);
 }
+
+@media (max-width: 480px) {
+  .card {
+    padding: 16px;
+    border-radius: var(--radius-md);
+  }
+}

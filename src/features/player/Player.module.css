@@ -16,6 +16,13 @@
   overflow: hidden;
 }
 
+@media (max-width: 480px) {
+  .playerCard {
+    border-radius: var(--radius-md);
+    width: 100%;
+  }
+}
+
 /* Background blob for vibe */
 .playerCard::before {
   content: '';

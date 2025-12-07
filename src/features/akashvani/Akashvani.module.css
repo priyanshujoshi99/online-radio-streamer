@@ -16,6 +16,7 @@
   font-weight: 700;
   margin: 0 0 1.5rem 0;
   background: var(--gradient-text);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: center;
@@ -35,4 +36,18 @@
   min-width: 100%;
   border: none;
   background: transparent;
+  display: block; /* Removes bottom space */
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: var(--font-size-lg);
+    margin-bottom: 1rem;
+  }
+  
+  .card {
+    border-radius: 0; /* Full width feel on mobile */
+    border-left: none;
+    border-right: none;
+  }
 }

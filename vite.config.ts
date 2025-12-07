@@ -30,6 +30,10 @@ export default defineConfig({
             type: 'image/png'
           }
         ]
+      },
+      workbox: {
+        navigateFallbackDenylist: [/^\/radio/],
+        globPatterns: ['**/*.{js,css,html,ico,png,svg}']
       }
     })
   ],
