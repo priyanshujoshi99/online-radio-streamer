@@ -26,7 +26,7 @@ export default async function handler(request: Request, context: Context) {
 
     if (contentType.includes("text/html")) {
         let text = await response.text();
-        const scriptTag = '<script src="https://cdn.jsdelivr.net/npm/iframe-resizer@4.3.9/js/iframeResizer.contentWindow.min.js"></script>';
+        const scriptTag = '<script src="https://cdn.jsdelivr.net/npm/iframe-resizer@5.5.7/js/iframeResizer.contentWindow.min.js"></script>';
         if (text.includes('</body>')) {
             text = text.replace('</body>', `${scriptTag}</body>`);
         } else {

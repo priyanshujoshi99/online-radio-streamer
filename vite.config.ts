@@ -1,47 +1,53 @@
 import react from '@vitejs/plugin-react';
-import { defineConfig } from 'vite';
+import { readFileSync } from 'node:fs';
+import { defineConfig, loadEnv } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
+const packageJson = JSON.parse(readFileSync('./package.json', 'utf-8'));
+const iframeResizerVersion = packageJson.dependencies['iframe-resizer'].replace(/^[\^~]/, '');
+
 // https://vite.dev/config/
-export default defineConfig({
-  plugins: [
-    react({
-      babel: {
-        plugins: [['babel-plugin-react-compiler']],
-      },
-    }),
-    VitePWA({
-      registerType: 'autoUpdate',
-      includeAssets: ['radio-logo.png'],
-      manifest: {
-        name: 'Online Radio Streamer',
-        short_name: 'RadioStreamer',
-        description: 'A simple online radio streamer application.',
-        theme_color: '#ffffff',
-        icons: [
-          {
-            src: 'pwa-192x192.png',
-            sizes: '192x192',
-            type: 'image/png'
-          },
-          {
-            src: 'pwa-512x512.png',
-            sizes: '512x512',
-            type: 'image/png'
-          }
-        ]
-      },
-      workbox: {
-        navigateFallbackDenylist: [/^\/radio/],
-        globPatterns: ['**/*.{js,css,html,ico,png,svg}']
-      }
-    })
-  ],
-  server: {
-    proxy: {
-      '/radio': {
-        target: 'https://akashvani.gov.in/radio',
-        changeOrigin: true,
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '');
+  return {
+    plugins: [
+      react({
+        babel: {
+          plugins: [['babel-plugin-react-compiler']],
+        },
+      }),
+      VitePWA({
+        registerType: 'autoUpdate',
+        includeAssets: ['radio-logo.png'],
+        manifest: {
+          name: 'Online Radio Streamer',
+          short_name: 'RadioStreamer',
+          description: 'A simple online radio streamer application.',
+          theme_color: '#ffffff',
+          icons: [
+            {
+              src: 'pwa-192x192.png',
+              sizes: '192x192',
+              type: 'image/png'
+            },
+            {
+              src: 'pwa-512x512.png',
+              sizes: '512x512',
+              type: 'image/png'
+            }
+          ]
+        },
+        workbox: {
+          navigateFallbackDenylist: [/^\/radio/],
+          globPatterns: ['**/*.{js,css,html,ico,png,svg}']
+        }
+      })
+    ],
+    server: {
+      proxy: {
+        '/radio': {
+          target: env.VITE_AKASHVANI_PROXY_TARGET || 'https://akashvani.gov.in/radio',
+          changeOrigin: true,
         selfHandleResponse: true,
         rewrite: (path) => path.replace(/^\/radio/, ''),
         configure: (proxy, _options) => {
@@ -67,7 +73,7 @@ export default defineConfig({
                 proxyRes.on('end', () => {
                   let bodyStr = Buffer.concat(body).toString();
                   // Inject script
-                  const scriptTag = '<script src="https://cdn.jsdelivr.net/npm/iframe-resizer@4.3.9/js/iframeResizer.contentWindow.min.js"></script>';
+                  const scriptTag = `<script src="https://cdn.jsdelivr.net/npm/iframe-resizer@${iframeResizerVersion}/js/iframeResizer.contentWindow.min.js"></script>`;
                   if (bodyStr.includes('</body>')) {
                     bodyStr = bodyStr.replace('</body>', `${scriptTag}</body>`);
                   }
@@ -90,4 +96,5 @@ export default defineConfig({
       }
     }
   }
-})
+  };
+});
