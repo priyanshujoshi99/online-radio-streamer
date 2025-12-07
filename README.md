@@ -1,98 +1,109 @@
-# Online Radio Streamer
 
-A modern, accessible, and responsive online radio player built with React, Vite, and TypeScript. This application features a clean interface, robust audio playback using `react-h5-audio-player`, and PWA support for installation on desktop and mobile devices.
+<div align="center">
+  <img src="public/radio-logo.png" alt="Radio Logo" width="120" />
+  <h1>Online Radio Streamer</h1>
+  <p>
+    <strong>A modern, premium, and glassmorphic online radio player built for the web.</strong>
+  </p>
 
-## Features
+  <p>
+    <a href="https://radiostr.netlify.app">View Demo</a> •
+    <a href="https://github.com/priyanshujoshi99/online-radio-streamer/issues">Report Bug</a> •
+    <a href="https://github.com/priyanshujoshi99/online-radio-streamer/pulls">Request Feature</a>
+  </p>
 
-*   **Live Radio Streaming**: Plays configured radio streams with support for various audio formats.
-*   **Station Management**: Easily switch between configured stations.
-*   **Manual URL Support**: Add and play custom stream URLs on the fly.
-*   **PWA Support**: Installable as a native-like app with offline fallback and custom branding.
-*   **Responsive Design**: optimized for both desktop and mobile screens.
-*   **Accessibility**: Built with semantic HTML and ARIA labels for better accessibility.
+  [![Netlify](https://img.shields.io/badge/Netlify-Hosted-success?style=flat&logo=netlify)](https://radiostr.netlify.app)
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+  [![React](https://img.shields.io/badge/react-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB)](https://react.dev/)
+  [![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=flat&logo=vite&logoColor=white)](https://vitejs.dev/)
+  [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+</div>
 
-## Configuration
+<br />
 
-The application is configured using environment variables.
+## 🌟 Overview
 
-**Note**: The `.env` file is committed to the repository for this project setup. You can modify it directly to change the default stations.
+**Online Radio Streamer** is a sophisticated web application designed to bring the radio experience to your browser. Featuring a stunning **Glassmorphism** UI, it provides a seamless listening experience for stations like **Radio Ceylon / Sri Lanka** and **Akashvani Live**.
 
-### Environment Variables
+Built with modern web technologies, it ensures performance, accessibility, and a native-app feel via PWA support.
 
-*   `VITE_RADIO_PRIMARY_NAME`: Name of the default radio station.
-*   `VITE_RADIO_PRIMARY_URL`: Stream URL for the default station.
-*   `VITE_RADIO_ADDITIONAL`: A JSON string array of additional stations.
-*   `VITE_RADIO_PROXY_ENABLED`: (Optional) Set to `true` to enable proxying (requires backend proxy).
-*   `VITE_RADIO_PROXY_BASE`: (Optional) Base URL for the proxy server.
+<div align="center">
+  <img src="./screenshot-mobile.png" alt="App Screenshot" width="300" style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" />
+</div>
 
-**Example `.env` content:**
+## ✨ Features
 
-```bash
-VITE_RADIO_PRIMARY_NAME="Radio Sri Lanka"
-VITE_RADIO_PRIMARY_URL="http://220.247.227.20:8000/RSLstream"
-VITE_RADIO_ADDITIONAL='[{"name":"Example FM","url":"http://1.2.3.4:8000/stream.mp3"}]'
-```
+- **🎨 Premium Design**: A beautiful Glassmorphism interface with dark mode aesthetics.
+- **📻 Live Streaming**: Robust audio playback for HTTP/HTTPS radio streams.
+- **📱 Fully Responsive**: Optimized layout for desktop, tablet, and mobile.
+- **🌍 Akashvani Integration**: Dedicated proxy handling to stream Akashvani Live securely.
+- **⚡ PWA Ready**: Installable on your device with offline app shell support.
+- **🛡️ Secure**: Strict content security policies and safe proxying.
 
-## Getting Started
+## 🛠️ Tech Stack
 
-1.  **Install dependencies**:
-    ```bash
-    npm install
-    ```
+- **Core**: React 19, TypeScript 5, Vite 7
+- **Styling**: CSS Modules, CSS Custom Properties (Variables)
+- **Audio**: `react-h5-audio-player`
+- **Deployment**: Netlify (Edge Functions used for stream proxying)
 
-2.  **Run the development server**:
-    ```bash
-    npm run dev
-    ```
+## 🚀 Getting Started
 
-3.  **Build for production**:
-    ```bash
-    npm run build
-    ```
+### Prerequisites
 
-4.  **Preview production build**:
-    ```bash
-    npm run preview
-    ```
+- Node.js (v18 or higher)
+- npm or yarn
 
-## PWA
+### Installation
 
-This application is configured as a Progressive Web App (PWA).
-- **Icons**: Radio logo assets are in the `public` directory.
-- **Manifest**: Generated automatically by `vite-plugin-pwa`.
-- **Offline**: Service worker caches critical assets for offline shell support.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/priyanshujoshi99/online-radio-streamer.git
+   cd online-radio-streamer
+   ```
 
-## Technologies
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
--   [React](https://react.dev/)
--   [Vite](https://vitejs.dev/)
--   [TypeScript](https://www.typescriptlang.org/)
--   [react-h5-audio-player](https://github.com/lhz516/react-h5-audio-player)
-- [react-h5-audio-player](https://github.com/lhz516/react-h5-audio-player)
-- [vite-plugin-pwa](https://vite-pwa-org.netlify.app/)
+3. **Configure Environment**
+   Create a `.env` file in the root directory (or modify the existing one):
+   ```bash
+   VITE_RADIO_PRIMARY_NAME="Radio Sri Lanka"
+   VITE_RADIO_PRIMARY_URL="http://220.247.227.20:8000/RSLstream"
+   VITE_AKASHVANI_URL="/radio/live.php"
+   VITE_AKASHVANI_PROXY_TARGET="https://akashvani.gov.in/radio"
+   ```
 
-## Deployment (Netlify)
+4. **Run Development Server**
+   ```bash
+   npm run dev
+   ```
 
-This project includes a `netlify.toml` configuration file for easy deployment. It also includes an Edge Function to proxy HTTP streams over HTTPS to avoid mixed-content errors.
+## 📦 Deployment
 
-### Enabling the Proxy (Required for HTTPS sites)
-If your deployed site is HTTPS (which Netlify is by default), playing an HTTP radio stream will fail. To fix this:
+This project comes with a `netlify.toml` pre-configured for **Netlify**.
 
-1.  In Netlify, go to **Site settings > Environment variables**.
-2.  Add `VITE_RADIO_PROXY_ENABLED` with value `true`.
-3.  (Optional) `VITE_RADIO_PROXY_BASE` can be left empty to use the deployed site's own proxy function.
+1. **Push to GitHub**.
+2. **Import site in Netlify**.
+3. **Environment Variables**: Add the variables from your `.env` to Netlify Site Settings.
+4. **Deploy**! The Edge Functions for proxying will be deployed automatically.
 
-### Deployment Options
+## 🤝 Contributing
 
-### Option 1: Drag and Drop
-1.  Run `npm run build` locally.
-2.  Drag the `dist` folder to the Netlify Drop area.
-**Note**: Drag and drop might not deploy Edge Functions correctly. **Git Integration is generally required for Edge Functions.**
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-### Option 2: Git Integration (Recommended)
-1.  Push your code to GitHub/GitLab/Bitbucket.
-2.  Log in to Netlify and "Import from Git".
-3.  Netlify will detect the settings from `netlify.toml`:
-    -   **Build Command**: `npm run build`
-    -   **Publish Directory**: `dist`
-4.  **Important**: In "Site settings" > "Environment variables", add the variables from your `.env` file (e.g., `VITE_RADIO_PRIMARY_NAME`, `VITE_RADIO_PRIMARY_URL`, etc.).
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📝 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## ❤️ Acknowledgements
+
+Built with love by [Priyanshu](https://github.com/priyanshujoshi99).

@@ -21,7 +21,7 @@ export default defineConfig(({ mode }) => {
         includeAssets: ['radio-logo.png'],
         manifest: {
           name: 'Online Radio Streamer',
-          short_name: 'RadioStreamer',
+          short_name: 'Radio Streamer',
           description: 'A simple online radio streamer application.',
           theme_color: '#ffffff',
           icons: [
