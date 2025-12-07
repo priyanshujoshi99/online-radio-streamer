@@ -1,6 +1,7 @@
 import { useState } from "react";
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
+import { useNavigate } from "react-router-dom";
 
 type Station = { name: string; url: string };
 
@@ -24,6 +25,7 @@ export default function RadioPlayer() {
   });
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const [status, setStatus] = useState<string>("idle");
+  const navigate = useNavigate();
 
   const currentStation = stations[selectedIndex];
 
@@ -126,6 +128,26 @@ export default function RadioPlayer() {
           setStatus("idle");
         }} />
       </div>
+
+      <div style={{ marginTop: 24, textAlign: 'center' }}>
+        <button
+          onClick={() => navigate('/akashvani')}
+          style={{
+            padding: "12px 24px",
+            fontSize: 16,
+            borderRadius: 8,
+            border: "none",
+            background: "#007bff",
+            color: "white",
+            cursor: "pointer",
+            width: "100%",
+            maxWidth: 300
+          }}
+        >
+          Go to Akashvani Live
+        </button>
+      </div>
+
     </div>
   );
 }

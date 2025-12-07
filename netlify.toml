@@ -9,3 +9,7 @@
 [[edge_functions]]
   path = "/proxy-stream"
   function = "proxy-stream"
+
+[[edge_functions]]
+  path = "/radio/*"
+  function = "proxy-radio"
